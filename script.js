@@ -1,4 +1,9 @@
-let playerName;
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+const options = [rockButton, paperButton, scissorsButton];
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -21,57 +26,23 @@ function getComputerChoice() {
     return choice;
 }
 
-function playerSelection() {
-    let isValid = false;
-    while (isValid == false) {
-        console.log("Enter rock, paper, or scissors.");
-        let selection = prompt();
-        let choice = selection.toLowerCase().trim();
-
-        if (choice == "rock" || choice == "paper" || choice == "scissors") {
-            return choice;
-        }
-        console.log("Invalid response");
-    }
-}
-
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
     for(let i=0; i < 5; i++) {
         let playerChoice = playerSelection();
         let computerChoice = getComputerChoice();
 
-        console.log("You chose " + playerChoice + ".");
-        console.log("I chose " + computerChoice + ".")
-
         if (playerChoice == "rock" && computerChoice == "scissors" || playerChoice == "paper" && computerChoice == "rock" || playerChoice == "scissors" && computerChoice == "paper") {
             playerScore++;
-            console.log("You Won!");
+            
         } else if (playerChoice == computerChoice) {
-            console.log("Tie.");
+            
         } else {
             computerScore++;
-            console.log("I Won!");
         }
-
-        if (computerScore >= 3 || playerScore >= 3) { 
-            console.log("Final score: " + playerScore + " - " + computerScore);
-            break; 
-        }
-
-        console.log("Score: " + playerScore + " - " + computerScore)
     }
 }
 
-function start() {
-    console.log("Welcome!");
-    console.log("What is your name?");
-    playerName = prompt();
-    console.log("Hi " + playerName + "!");
-    console.log(playerName + ", let's play a game of rock paper scissors.");
-    console.log("Best out of 5 wins.");
-    game();
-}
-
-start();
+options.forEach(button =>  button.addEventListener('click', function(e) {
+    options.forEach(i => i.classList.remove("selected"));
+    button.classList.add("selected");
+}))
