@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(67, 114, 67);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#score {
+    font-size: 120px;
+    margin: 40px;
+}
+
+img {
+    width: 280px;
+    height: 280px;
+    margin: 0px;
+    background-color: transparent;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+}
+
+.button-container > button {
+    background-color: transparent;
+    border-radius: 15px;
+    border: 4px solid black;
+}
+
+.message {
+    font-size: 36px;
+}
+
+.submit {
+    width: 240px;
+    height: 60px;
+    border-radius: 5%;
+    margin: 80px;
+    font-size: 24px;
+    background-color: rgb(165, 196, 165);
+}
